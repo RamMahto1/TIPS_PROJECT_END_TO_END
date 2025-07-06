@@ -4,6 +4,7 @@ import sys
 from src.components.data_ingestion import DataIngestion
 from src.components.data_transformation import DataTransformation
 from src.utils import saved_obj
+from src.components.data_validation import DataValidation
 
 
 
@@ -26,12 +27,13 @@ def main():
     print(f"Data Transformation train object:{train_arr}")
     print(f"Data tranformation test object:{test_arr}")
     
-
     
+    # Data validation
+    validation=DataValidation(train_path,test_path)
+    train_df, test_df = validation.initiate_data_validation()
+    logging.info("Data validation completed")
+    return train_df,test_df
     
-    
-    
-
 if __name__ == "__main__":
     main()
     
