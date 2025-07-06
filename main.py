@@ -5,6 +5,7 @@ from src.components.data_ingestion import DataIngestion
 from src.components.data_transformation import DataTransformation
 from src.utils import saved_obj
 from src.components.data_validation import DataValidation
+from src.components.model_trainer import ModelTrainer
 
 
 
@@ -32,7 +33,12 @@ def main():
     validation=DataValidation(train_path,test_path)
     train_df, test_df = validation.initiate_data_validation()
     logging.info("Data validation completed")
-    return train_df,test_df
+    #return train_df,test_df
+
+    # Model Training
+    model_trainer = ModelTrainer()
+    report, best_model_name, best_model, best_score = model_trainer.initiate_model_trainer(train_arr, test_arr)
+    logging.info("Model training completed successfully")
     
 if __name__ == "__main__":
     main()
