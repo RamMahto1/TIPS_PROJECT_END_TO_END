@@ -3,6 +3,8 @@ numpy
 scikit-learn
 xgboost
 catboost
+flask
+freeze
 
 
 ##-e .
